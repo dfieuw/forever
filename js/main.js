@@ -13,7 +13,6 @@
     countdownDate: new Date(2026, 7, 1, 18, 0), // Aug 1, 2026 6pm — CHANGE THIS
     mapLocations: [
       { lat: 40.7608, lng: -111.8910, label: 'Salt Lake City', desc: 'Facebook Dating brought us together, but we tell people Marketplace 😏', color: '#B76E79', type: 'origin' },
-      { lat: 40.7488, lng: -111.8713, label: 'Cucina', desc: 'Feb 28, 2025. First date. First kiss. The night everything changed.', color: '#B76E79', type: 'origin' },
       { lat: 40.6461, lng: -111.4980, label: 'Park City', desc: 'Snowfall walks, wine festival, hot tub, Bridge Cafe brunch. A perfect weekend.', color: '#C9A96E', type: 'adventure' },
       { lat: 43.1614, lng: -111.0193, label: 'Alpine, Wyoming', desc: 'River rafting. She rode the bull and didn\'t fall in. Legend.', color: '#C9A96E', type: 'adventure' },
       { lat: 42.5558, lng: -114.4601, label: 'Twin Falls, Idaho', desc: 'Another adventure in the books.', color: '#C9A96E', type: 'adventure' },
