@@ -1598,9 +1598,12 @@ button {
   100% { transform: scale(1); opacity: 1; }
 }
 
-.celebration-hearts {
+.celebration-ornament {
   font-size: 2rem;
+  color: var(--gold);
   margin-bottom: 2rem;
+  letter-spacing: 0.5em;
+  opacity: 0.7;
 }
 
 .celebration-sub {

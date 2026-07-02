@@ -314,17 +314,11 @@
       celebration.style.display = 'flex';
       celebTitle.textContent = message;
 
-      // Hearts
-      const heartsContainer = celebration.querySelector('.celebration-hearts');
-      heartsContainer.textContent = '❤️ 💕 💖 💗 💝 💘 💕 ❤️';
-
-      // Confetti explosion
       fireConfetti();
       setTimeout(fireConfetti, 700);
       setTimeout(fireConfetti, 1400);
       setTimeout(fireConfetti, 2100);
 
-      // Floating hearts
       createFloatingHearts();
     }
 
@@ -371,39 +365,42 @@
 
   // ==================== FLOATING HEARTS ====================
   function createFloatingHearts() {
-    const hearts = ['❤️', '💕', '💖', '💗', '💝', '🤍', '💘'];
-    const container = document.getElementById('celebration');
-
-    for (let i = 0; i < 25; i++) {
-      setTimeout(() => {
-        const heart = document.createElement('div');
-        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-        heart.style.cssText = `
-          position: fixed;
-          left: ${Math.random() * 100}vw;
-          bottom: -50px;
-          font-size: ${1.5 + Math.random() * 2}rem;
-          z-index: 10005;
-          pointer-events: none;
-          animation: floatUp ${4 + Math.random() * 4}s ease-out forwards;
-          opacity: 0.9;
-        `;
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 8000);
-      }, i * 200);
-    }
-
-    // Add float animation if not already added
     if (!document.getElementById('float-hearts-style')) {
       const style = document.createElement('style');
       style.id = 'float-hearts-style';
       style.textContent = `
         @keyframes floatUp {
-          0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
-          100% { transform: translateY(-110vh) rotate(${360}deg); opacity: 0; }
+          0% { transform: translateY(0) rotate(0deg) scale(0.5); opacity: 0; }
+          10% { opacity: 1; transform: translateY(-10vh) rotate(15deg) scale(1); }
+          100% { transform: translateY(-110vh) rotate(45deg) scale(0.8); opacity: 0; }
+        }
+        .float-heart {
+          position: fixed;
+          z-index: 10005;
+          pointer-events: none;
+          bottom: -30px;
+        }
+        .float-heart svg {
+          filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
         }
       `;
       document.head.appendChild(style);
+    }
+
+    const colors = ['#C9A96E', '#E8D5A3', '#B76E79', '#D4A0A8', '#E8C4C4', '#916572'];
+
+    for (let i = 0; i < 20; i++) {
+      setTimeout(() => {
+        const el = document.createElement('div');
+        el.className = 'float-heart';
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const size = 18 + Math.random() * 24;
+        el.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
+        el.style.left = Math.random() * 100 + 'vw';
+        el.style.animation = `floatUp ${5 + Math.random() * 5}s ease-out forwards`;
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 10000);
+      }, i * 250);
     }
   }
 
