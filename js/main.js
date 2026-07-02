@@ -12,13 +12,13 @@
     // Set your proposal/countdown date here (YYYY, M-1, D, H, M)
     countdownDate: new Date(2026, 7, 1, 18, 0), // Aug 1, 2026 6pm — CHANGE THIS
     mapLocations: [
-      // Update these coordinates to your actual locations
-      { lat: 39.7392, lng: -104.9903, label: 'Where It All Began', desc: 'Facebook Dating — but we tell people Marketplace 😏', color: '#B76E79', type: 'origin' },
-      { lat: 39.7508, lng: -104.9966, label: 'Cucina — First Date', desc: 'Feb 28, 2025. Wildwood was booked. Best pivot of our lives.', color: '#B76E79', type: 'origin' },
+      { lat: 40.7608, lng: -111.8910, label: 'Salt Lake City', desc: 'Facebook Dating brought us together — but we tell people Marketplace 😏', color: '#B76E79', type: 'origin' },
+      { lat: 40.7488, lng: -111.8713, label: 'Oasis & The Pearl', desc: 'Feb 28, 2025 — First date. First kiss. The night everything changed.', color: '#B76E79', type: 'origin' },
+      { lat: 40.6461, lng: -111.4980, label: 'Park City', desc: 'Snowfall walks, wine festival, hot tub, Bridge Cafe brunch. A perfect weekend.', color: '#C9A96E', type: 'adventure' },
       { lat: 43.1614, lng: -111.0193, label: 'Alpine, Wyoming', desc: 'River rafting — screaming, laughing, and never letting go.', color: '#C9A96E', type: 'adventure' },
       { lat: 50.8503, lng: 4.3517, label: 'Belgium', desc: 'Waffles, chocolate, cobblestones, and us. Our love went international.', color: '#C9A96E', type: 'adventure' },
       { lat: 36.1699, lng: -115.1398, label: 'Las Vegas', desc: 'Concerts under neon lights. We hit the jackpot long before we got here.', color: '#C9A96E', type: 'adventure' },
-      { lat: 39.7392, lng: -104.8703, label: 'Home', desc: 'Two houses later, we built something no address could contain.', color: '#722F37', type: 'home' },
+      { lat: 40.7608, lng: -111.8510, label: 'Home', desc: 'From two homes to one. This is where our forever lives.', color: '#722F37', type: 'home' },
     ]
   };
 
