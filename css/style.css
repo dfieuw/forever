@@ -711,7 +711,6 @@ button {
 
 .resume-heading span {
   color: var(--rose);
-  font-style: italic;
 }
 
 .resume-meta {
@@ -998,7 +997,7 @@ button {
   font-size: 1rem;
   color: var(--warm-gray);
   line-height: 1.7;
-  font-style: italic;
+  font-style: normal;
 }
 
 @media (max-width: 768px) {
@@ -1320,7 +1319,7 @@ button {
 .date-desc {
   font-size: 0.9rem;
   color: var(--warm-gray);
-  font-style: italic;
+  font-style: normal;
 }
 
 @media (max-width: 600px) {
