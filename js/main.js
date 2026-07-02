@@ -8,7 +8,7 @@
 
   var CONFIG = {
     password: 'marketplace',
-    togetherSince: new Date(2025, 2, 18),
+    togetherSince: new Date(2025, 2, 18, 17, 30),
     mapLocations: [
       { lat: 40.7608, lng: -111.8910, label: 'Salt Lake City', desc: 'Facebook Dating brought us together, but we tell people Marketplace 😏', color: '#B76E79', type: 'origin' },
       { lat: 40.6461, lng: -111.4980, label: 'Park City', desc: 'Snowfall walks, wine festival, hot tub, Bridge Cafe brunch. A perfect weekend.', color: '#C9A96E', type: 'adventure' },
