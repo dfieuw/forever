@@ -76,41 +76,44 @@
   function runLoadingSequence() {
     const loader = document.getElementById('loading-sequence');
     loader.classList.remove('hidden');
-    loader.style.display = 'flex';
+    loader.style.display = 'block';
 
-    const lines = loader.querySelectorAll('.loading-line');
-    let current = 0;
+    const screens = loader.querySelectorAll('.load-screen');
+    const decrypt = document.getElementById('load-decrypt');
+    let currentScreen = 0;
 
-    function showNext() {
-      if (current > 0) {
-        lines[current - 1].classList.remove('active');
-        lines[current - 1].classList.add('fade-out');
+    // Show decrypt screen first, auto-advance after 3 seconds
+    decrypt.classList.add('active');
+    setTimeout(() => {
+      advanceScreen();
+    }, 3000);
+
+    function advanceScreen() {
+      screens[currentScreen].classList.remove('active');
+      currentScreen++;
+      if (currentScreen < screens.length) {
+        screens[currentScreen].classList.add('active');
       }
-      if (current < lines.length) {
+    }
+
+    // Tap/click to advance through chapters
+    loader.addEventListener('click', function handleTap() {
+      if (currentScreen === 0) return; // Don't skip decrypt
+      if (currentScreen < screens.length - 1) {
+        advanceScreen();
+      } else {
+        // Final screen tapped, reveal the site
+        loader.removeEventListener('click', handleTap);
+        loader.style.transition = 'opacity 1s ease';
+        loader.style.opacity = '0';
         setTimeout(() => {
-          lines[current].classList.add('active');
-          current++;
-          if (current < lines.length) {
-            setTimeout(showNext, 1800);
-          } else {
-            setTimeout(finishLoading, 2000);
-          }
-        }, 300);
+          loader.classList.add('hidden');
+          mainContent.classList.remove('hidden');
+          musicPlayer.classList.remove('hidden');
+          initSite();
+        }, 1000);
       }
-    }
-
-    function finishLoading() {
-      loader.style.transition = 'opacity 1s ease';
-      loader.style.opacity = '0';
-      setTimeout(() => {
-        loader.classList.add('hidden');
-        mainContent.classList.remove('hidden');
-        musicPlayer.classList.remove('hidden');
-        initSite();
-      }, 1000);
-    }
-
-    setTimeout(showNext, 500);
+    });
   }
 
   // ==================== INIT SITE ====================

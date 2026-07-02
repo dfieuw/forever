@@ -74,13 +74,35 @@
 
   <!-- ============ LOADING SEQUENCE ============ -->
   <div id="loading-sequence" class="hidden">
-    <div class="loading-content">
-      <div class="loading-line" data-delay="0">Decrypting our memories...</div>
-      <div class="loading-line" data-delay="2000">The Beginning</div>
-      <div class="loading-line" data-delay="4000">Our Adventures</div>
-      <div class="loading-line" data-delay="6000">Our Challenges</div>
-      <div class="loading-line" data-delay="8000">Our Future</div>
-      <div class="loading-line loading-final" data-delay="10000">Access Granted</div>
+    <!-- Auto screen -->
+    <div class="load-screen load-decrypt active" id="load-decrypt">
+      <div class="load-dots"><span>.</span><span>.</span><span>.</span></div>
+      <p class="load-text">Decrypting our memories</p>
+    </div>
+    <!-- Tap-through screens -->
+    <div class="load-screen" data-chapter="1">
+      <p class="load-chapter-label">Chapter One</p>
+      <h2 class="load-chapter-title">The Beginning</h2>
+      <p class="load-tap">tap to continue</p>
+    </div>
+    <div class="load-screen" data-chapter="2">
+      <p class="load-chapter-label">Chapter Two</p>
+      <h2 class="load-chapter-title">Our Adventures</h2>
+      <p class="load-tap">tap to continue</p>
+    </div>
+    <div class="load-screen" data-chapter="3">
+      <p class="load-chapter-label">Chapter Three</p>
+      <h2 class="load-chapter-title">Our Challenges</h2>
+      <p class="load-tap">tap to continue</p>
+    </div>
+    <div class="load-screen" data-chapter="4">
+      <p class="load-chapter-label">Chapter Four</p>
+      <h2 class="load-chapter-title">Our Future</h2>
+      <p class="load-tap">tap to continue</p>
+    </div>
+    <div class="load-screen load-final" data-chapter="final">
+      <h2 class="load-granted">Access Granted</h2>
+      <p class="load-tap">tap to begin</p>
     </div>
   </div>
 
