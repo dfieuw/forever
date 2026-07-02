@@ -1210,6 +1210,7 @@ button {
   color: var(--charcoal);
   line-height: 1.9;
   margin-bottom: 1rem;
+  font-style: normal;
 }
 
 .letter-date {
