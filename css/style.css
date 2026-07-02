@@ -809,6 +809,7 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   transition: transform 0.6s ease;
 }
 
@@ -1047,6 +1048,7 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   transition: transform 0.5s ease;
 }
 
@@ -1285,6 +1287,7 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
 }
 
 .memory-text {
