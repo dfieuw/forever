@@ -9,8 +9,7 @@
   // ==================== CONFIG ====================
   const CONFIG = {
     password: 'marketplace',
-    // Set your proposal/countdown date here (YYYY, M-1, D, H, M)
-    countdownDate: new Date(2026, 7, 1, 18, 0), // Aug 1, 2026 6pm — CHANGE THIS
+    togetherSince: new Date(2025, 2, 18), // March 18, 2025
     mapLocations: [
       { lat: 40.7608, lng: -111.8910, label: 'Salt Lake City', desc: 'Facebook Dating brought us together, but we tell people Marketplace 😏', color: '#B76E79', type: 'origin' },
       { lat: 40.6461, lng: -111.4980, label: 'Park City', desc: 'Snowfall walks, wine festival, hot tub, Bridge Cafe brunch. A perfect weekend.', color: '#C9A96E', type: 'adventure' },
@@ -45,9 +44,7 @@
       gate.style.opacity = '0';
       setTimeout(() => {
         gate.classList.add('hidden');
-        mainContent.classList.remove('hidden');
-        musicPlayer.classList.remove('hidden');
-        initSite();
+        runLoadingSequence();
       }, 1000);
     } else {
       pwError.hidden = false;
@@ -74,6 +71,47 @@
     }
   `;
   document.head.appendChild(shakeStyle);
+
+  // ==================== LOADING SEQUENCE ====================
+  function runLoadingSequence() {
+    const loader = document.getElementById('loading-sequence');
+    loader.classList.remove('hidden');
+    loader.style.display = 'flex';
+
+    const lines = loader.querySelectorAll('.loading-line');
+    let current = 0;
+
+    function showNext() {
+      if (current > 0) {
+        lines[current - 1].classList.remove('active');
+        lines[current - 1].classList.add('fade-out');
+      }
+      if (current < lines.length) {
+        setTimeout(() => {
+          lines[current].classList.add('active');
+          current++;
+          if (current < lines.length) {
+            setTimeout(showNext, 1800);
+          } else {
+            setTimeout(finishLoading, 2000);
+          }
+        }, 300);
+      }
+    }
+
+    function finishLoading() {
+      loader.style.transition = 'opacity 1s ease';
+      loader.style.opacity = '0';
+      setTimeout(() => {
+        loader.classList.add('hidden');
+        mainContent.classList.remove('hidden');
+        musicPlayer.classList.remove('hidden');
+        initSite();
+      }, 1000);
+    }
+
+    setTimeout(showNext, 500);
+  }
 
   // ==================== INIT SITE ====================
   function initSite() {
@@ -262,7 +300,7 @@
     });
   }
 
-  // ==================== COUNTDOWN ====================
+  // ==================== COUNT UP ====================
   function initCountdown() {
     const daysEl = document.getElementById('cd-days');
     const hoursEl = document.getElementById('cd-hours');
@@ -271,15 +309,7 @@
 
     function update() {
       const now = new Date();
-      const diff = CONFIG.countdownDate - now;
-
-      if (diff <= 0) {
-        daysEl.textContent = '00';
-        hoursEl.textContent = '00';
-        minutesEl.textContent = '00';
-        secondsEl.textContent = '00';
-        return;
-      }
+      const diff = now - CONFIG.togetherSince;
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);

@@ -325,6 +325,55 @@ button {
   #nav-hamburger { display: flex; }
 }
 
+/* ---------- LOADING SEQUENCE ---------- */
+#loading-sequence {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: var(--charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-content {
+  text-align: center;
+  padding: 2rem;
+}
+
+.loading-line {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 300;
+  color: var(--cream);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  margin-bottom: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  letter-spacing: 0.1em;
+}
+
+.loading-line.active {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.loading-line.fade-out {
+  opacity: 0;
+  transform: translate(-50%, calc(-50% - 20px));
+}
+
+.loading-final {
+  font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+}
+
 /* ---------- SECTION HEADERS ---------- */
 .section-header {
   text-align: center;
@@ -838,6 +887,35 @@ button {
 
 .gallery-item:hover img {
   transform: scale(1.08);
+}
+
+/* Gallery captions */
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1rem 1rem;
+  background: linear-gradient(to top, rgba(45, 36, 38, 0.8) 0%, transparent 100%);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--cream);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.gallery-item:hover .gallery-caption {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .gallery-caption {
+    opacity: 1;
+    font-size: 0.8rem;
+    padding: 1.5rem 0.8rem 0.8rem;
+  }
 }
 
 .gallery-wide {
@@ -1395,6 +1473,15 @@ button {
   margin-top: -1rem;
 }
 
+.countdown-sub {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--gold-light);
+  margin-top: 2rem;
+  letter-spacing: 0.1em;
+}
+
 @media (max-width: 480px) {
   .countdown-separator {
     display: none;
@@ -1409,22 +1496,35 @@ button {
 
 /* ---------- PROPOSAL ---------- */
 #proposal {
-  padding: 6rem 2rem 10rem;
+  padding: 0;
   text-align: center;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--charcoal) 15%, var(--charcoal) 100%);
 }
 
-.proposal-stage {
-  margin-bottom: 4rem;
+.proposal-chapter {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
-.proposal-text {
+.proposal-chapter-text {
   font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-size: clamp(1.6rem, 4.5vw, 3rem);
   font-weight: 300;
-  color: var(--charcoal);
+  color: var(--cream);
   max-width: 700px;
-  margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+.proposal-final {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 2rem 8rem;
 }
 
 .proposal-btn {
