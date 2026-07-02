@@ -23,6 +23,7 @@
       { lat: 51.2093, lng: 3.2247, label: 'Bruges', desc: 'Cobblestones and fairy tale streets.', color: '#C9A96E', type: 'adventure' },
       { lat: 36.1699, lng: -115.1398, label: 'Las Vegas', desc: 'Concerts under neon lights. We hit the jackpot long before we got here.', color: '#C9A96E', type: 'adventure' },
       { lat: 37.0965, lng: -113.5684, label: 'St. George, Utah', desc: 'Red rocks and good times.', color: '#C9A96E', type: 'adventure' },
+      { lat: 36.1627, lng: -86.7816, label: 'Nashville', desc: 'Music City with my favorite person.', color: '#C9A96E', type: 'adventure' },
       { lat: 40.7608, lng: -111.8510, label: 'Home', desc: 'From two homes to one. This is where our forever lives.', color: '#722F37', type: 'home' },
     ]
   };
