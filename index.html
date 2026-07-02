@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Darci & Kris | Forever</title>
+  <meta name="description" content="A love story.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ PASSWORD GATE ============ -->
+  <div id="password-gate">
+    <div class="gate-content">
+      <div class="gate-icon">💌</div>
+      <h1 class="gate-title">This is a Private Love Story</h1>
+      <p class="gate-subtitle">Enter the password to continue</p>
+      <div class="gate-input-wrap">
+        <input type="password" id="password-input" placeholder="Enter password..." autocomplete="off">
+        <button id="password-submit" aria-label="Submit password">→</button>
+      </div>
+      <p class="gate-hint">Hint: Where did we <em>really</em> meet? 😏</p>
+      <p id="password-error" class="gate-error" hidden>That's not it, try again...</p>
+    </div>
+  </div>
+
+  <!-- ============ FALLING PETALS ============ -->
+  <canvas id="petals-canvas"></canvas>
+
+  <!-- ============ MUSIC PLAYER ============ -->
+  <div id="music-player" class="hidden">
+    <audio id="bg-music" loop preload="auto">
+      <source src="music/song.mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-toggle" aria-label="Toggle music">
+      <span class="music-icon music-off">♪</span>
+      <span class="music-icon music-on hidden">♫</span>
+    </button>
+  </div>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav id="main-nav" class="hidden">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">D & K</a>
+      <div class="nav-links">
+        <a href="#our-story">Our Story</a>
+        <a href="#resume">The Resume</a>
+        <a href="#gallery">Photos</a>
+        <a href="#reasons">Love</a>
+        <a href="#memories">Memories</a>
+        <a href="#map-section">Map</a>
+        <a href="#love-letter">Letter</a>
+      </div>
+      <button id="nav-hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden">
+      <a href="#our-story">Our Story</a>
+      <a href="#resume">The Resume</a>
+      <a href="#gallery">Photos</a>
+      <a href="#reasons">Why I Love You</a>
+      <a href="#memories">Memories</a>
+      <a href="#map-section">Our Map</a>
+      <a href="#love-letter">Love Letter</a>
+      <a href="#proposal">Forever</a>
+    </div>
+  </nav>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main id="main-content" class="hidden">
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-bg">
+        <img src="images/hero.jpg" alt="Darci and Kris together" class="hero-img" onerror="this.style.display='none'">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-pre animate-in">From Our First Hello...</p>
+        <h1 class="hero-title animate-in delay-1">To Forever.</h1>
+        <a href="#our-story" class="hero-btn animate-in delay-2">Our Story</a>
+      </div>
+      <div class="scroll-indicator animate-in delay-3">
+        <span></span>
+      </div>
+    </section>
+
+    <!-- OUR STORY TIMELINE -->
+    <section id="our-story">
+      <div class="section-header animate-on-scroll">
+        <p class="section-pre">Chapter One</p>
+        <h2 class="section-title">Our Story</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item animate-on-scroll" data-side="left">
+          <div class="timeline-date">February 2025</div>
+          <div class="timeline-card">
+            <div class="timeline-img-wrap">
+              <img src="images/timeline-met.jpg" alt="How we met" onerror="this.parentElement.classList.add('placeholder')">
+              <div class="img-placeholder">📱 Photo of us</div>
+            </div>
+            <div class="timeline-text">
+              <h3>We "Met"</h3>
+              <p>Facebook Dating brought us together — though we like to say we met on Facebook Marketplace. Best deal either of us ever found.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item animate-on-scroll" data-side="right">
+          <div class="timeline-date">February 28, 2025</div>
+          <div class="timeline-card">
+            <div class="timeline-img-wrap">
+              <img src="images/timeline-first-date.jpg" alt="First date at Cucina" onerror="this.parentElement.classList.add('placeholder')">
+              <div class="img-placeholder">🍝 First date</div>
+            </div>
+            <div class="timeline-text">
+              <h3>First Date</h3>
+              <p>Wildwood needed reservations. Neither of us made one. We pivoted to Cucina and then drinks — and honestly? It was perfect. Some of the best things in life are unplanned.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item animate-on-scroll" data-side="left">
+          <div class="timeline-date">March 18, 2025</div>
+          <div class="timeline-card">
+            <div class="timeline-img-wrap">
+              <img src="images/timeline-official.jpg" alt="The day we became official" onerror="this.parentElement.classList.add('placeholder')">
+              <div class="img-placeholder">💕 Official day</div>
+            </div>
+            <div class="timeline-text">
+              <h3>She Got the Job</h3>
+              <p>I sent her a resume to apply for the role of Girlfriend. She reviewed my qualifications and — lucky me — I was hired on the spot. Best career move I ever made.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item animate-on-scroll" data-side="right">
+          <div class="timeline-date">2025</div>
+          <div class="timeline-card">
+            <div class="timeline-img-wrap">
+              <img src="images/timeline-camping.jpg" alt="Camping adventures" onerror="this.parentElement.classList.add('placeholder')">
+              <div class="img-placeholder">⛺ Camping</div>
+            </div>
+            <div class="timeline-text">
+              <h3>Camping Adventures</h3>
+              <p>Stars, campfires, and falling asleep next to my favorite person. Every trip outdoors reminded me — this is exactly where I'm supposed to be.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item animate-on-scroll" data-side="left">
+          <div class="timeline-date">2025</div>
+          <div class="timeline-card">
+            <div class="timeline-img-wrap">
+              <img src="images/timeline-rafting.jpg" alt="River rafting in Alpine, WY" onerror="this.parentElement.classList.add('placeholder')">
+              <div class="img-placeholder">🚣 River rafting</div>
+            </div>
+            <div class="timeline-text">
+              <h3>Alpine, Wyoming</h3>
+              <p>River rafting through the rapids — screaming, laughing, holding on. Turns out navigating whitewater with you is a lot like our relationship: wild, thrilling, and I wouldn't trade it for anything.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item animate-on-scroll" data-side="right">
+          <div class="timeline-date">2025</div>
+          <div class="timeline-card">
+            <div class="timeline-img-wrap">
+              <img src="images/timeline-belgium-1.jpg" alt="Belgium trip" onerror="this.parentElement.classList.add('placeholder')">
+              <div class="img-placeholder">🇧🇪 Belgium</div>
+            </div>
+            <div class="timeline-text">
+              <h3>Belgium</h3>
+              <p>Waffles, chocolate, cobblestone streets, and you. We took our love across the ocean and it only got bigger.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item animate-on-scroll" data-side="left">
+          <div class="timeline-date">2025</div>
+          <div class="timeline-card">
+            <div class="timeline-img-wrap">
+              <img src="images/timeline-concert-1.jpg" alt="Concert together" onerror="this.parentElement.classList.add('placeholder')">
+              <div class="img-placeholder">🎵 Concert</div>
+            </div>
+            <div class="timeline-text">
+              <h3>Concert After Concert</h3>
+              <p>Our love language might just be live music. Every show, every crowd, every stolen glance during our favorite song — those are the moments I live for.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item animate-on-scroll" data-side="right">
+          <div class="timeline-date">2025</div>
+          <div class="timeline-card">
+            <div class="timeline-img-wrap">
+              <img src="images/timeline-vegas-1.jpg" alt="Las Vegas" onerror="this.parentElement.classList.add('placeholder')">
+              <div class="img-placeholder">🎰 Vegas</div>
+            </div>
+            <div class="timeline-text">
+              <h3>Vegas, Baby</h3>
+              <p>What happens in Vegas... ends up as our favorite concert memories. The lights, the energy, the music — but honestly, I was just watching you.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item animate-on-scroll" data-side="left">
+          <div class="timeline-date">2025</div>
+          <div class="timeline-card">
+            <div class="timeline-img-wrap">
+              <img src="images/timeline-datenight.jpg" alt="Friday date nights" onerror="this.parentElement.classList.add('placeholder')">
+              <div class="img-placeholder">🥂 Date night</div>
+            </div>
+            <div class="timeline-text">
+              <h3>Friday Date Nights</h3>
+              <p>Our weekly tradition. It doesn't matter where we go — what matters is that every Friday, we choose each other all over again.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item animate-on-scroll" data-side="right">
+          <div class="timeline-date">2025 — 2026</div>
+          <div class="timeline-card">
+            <div class="timeline-img-wrap">
+              <img src="images/timeline-moved-in.jpg" alt="Moving in together" onerror="this.parentElement.classList.add('placeholder')">
+              <div class="img-placeholder">🏡 Home</div>
+            </div>
+            <div class="timeline-text">
+              <h3>Building a Home</h3>
+              <p>First my place, then yours. We sold a house, packed boxes twice, and somewhere between all that chaos — we built something that no address could contain. We built <em>us</em>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item animate-on-scroll" data-side="left">
+          <div class="timeline-date">Today & Forever</div>
+          <div class="timeline-card timeline-card-special">
+            <div class="timeline-img-wrap">
+              <img src="images/timeline-future.jpg" alt="Our future" onerror="this.parentElement.classList.add('placeholder')">
+              <div class="img-placeholder">✨ Our future</div>
+            </div>
+            <div class="timeline-text">
+              <h3>The Next Chapter</h3>
+              <p>Every chapter with you has been better than the last. And I have a feeling the next one is going to be the best yet...</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- THE RESUME -->
+    <section id="resume">
+      <div class="section-header animate-on-scroll">
+        <p class="section-pre">Remember This?</p>
+        <h2 class="section-title">The Resume — Revisited</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">I once sent you a resume to apply for the role of Your Girlfriend.<br>Consider this my application for a promotion.</p>
+      </div>
+
+      <div class="resume-container animate-on-scroll">
+        <div class="resume-paper">
+          <div class="resume-stamp">PROMOTION<br>REQUESTED</div>
+
+          <h3 class="resume-heading">Application for the Position of: <span>Your Wife</span></h3>
+
+          <p class="resume-meta"><strong>Name:</strong> Your Current Babe (but you can call me Darci, your future wife)</p>
+          <p class="resume-meta"><strong>Contact:</strong> Already next to you on the couch. Permanently.</p>
+          <p class="resume-meta"><strong>Location:</strong> Home. Our home. ❤️</p>
+
+          <hr class="resume-hr">
+
+          <h4 class="resume-section-title">Objective</h4>
+          <p>To secure the lifetime role of <strong>Your Wife</strong> — offering unconditional love, a permanent plus-one, someone who will always fight for the aux cord, and a guarantee that you'll never have to make a restaurant reservation alone again.</p>
+
+          <hr class="resume-hr">
+
+          <h4 class="resume-section-title">Qualifications (Updated)</h4>
+          <ul>
+            <li><strong>Promoted</strong> from Certified Expert in Flirty Banter → <em>Chief Romance Officer</em></li>
+            <li>Hoodie Borrowing has evolved into a <strong>Full Wardrobe Merger</strong> (what's mine is yours, what's yours is also mine)</li>
+            <li>Award-Winning Snuggle Strategist → Now holds a <strong>PhD in Advanced Snuggling</strong></li>
+            <li>From remembering your coffee order → Now I know your every mood, dream, and the exact tone of <em>"I'm fine"</em> that means you're not</li>
+            <li><strong>Expert-level</strong> at turning car rides into deep conversations and singing duets at concerts</li>
+          </ul>
+
+          <hr class="resume-hr">
+
+          <h4 class="resume-section-title">Experience</h4>
+
+          <p class="resume-role"><strong>Professional Girlfriend</strong> <span>| March 18, 2025 — Present</span></p>
+          <ul>
+            <li>Successfully pivoted from Wildwood to Cucina on zero notice — <em>first date clutch</em></li>
+            <li>Survived river rapids in Alpine, WY without letting go of her hand (mostly)</li>
+            <li>Navigated Belgian streets, Vegas strip, and approximately 47 concert venues</li>
+            <li>Managed two successful household relocations with minimal tears (some happy ones)</li>
+            <li>Maintained a perfect Friday Date Night attendance record</li>
+          </ul>
+
+          <p class="resume-role"><strong>Full-Time Adventure Partner</strong> <span>| Immediately Available</span></p>
+          <ul>
+            <li>Camping coordinator, concert buddy, and international travel companion</li>
+            <li>Turns ordinary Tuesday evenings into favorite memories</li>
+            <li>Excellent at saying "yes" to spontaneous plans — especially if food is involved</li>
+          </ul>
+
+          <p class="resume-role"><strong>Communication & Reassurance Specialist</strong> <span>| 24/7 — Forever</span></p>
+          <ul>
+            <li>Upgraded from random check-ins to knowing exactly what you need before you ask</li>
+            <li>Professional-grade listener with zero-judgment policy</li>
+            <li>Always the first call, the last goodnight, and everything in between</li>
+          </ul>
+
+          <hr class="resume-hr">
+
+          <h4 class="resume-section-title">References</h4>
+          <ul>
+            <li>My kids — still think I'm the best. Their taste remains impeccable.</li>
+            <li>My friends — upgraded from "she's a catch" to "when's the wedding?"</li>
+            <li>Everyone who's seen us together — "you two were made for each other"</li>
+          </ul>
+
+          <hr class="resume-hr">
+
+          <h4 class="resume-section-title">Salary Expectations</h4>
+          <p>Paid in forever kisses, lazy Sunday mornings, that laugh you do when you think no one's watching, and the way you reach for my hand without thinking about it.</p>
+
+          <h4 class="resume-section-title">Benefits Package</h4>
+          <p>Previously listed as <em>"Hopefully includes unlimited cuddles and a forever contract."</em></p>
+          <p><strong>Updated:</strong> The forever contract is now non-negotiable. I'm not going anywhere. ❤️</p>
+
+          <div class="resume-footer">
+            <p class="resume-note">P.S. — You already hired me once. I'm just asking you to make it permanent.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTO GALLERY -->
+    <section id="gallery">
+      <div class="section-header animate-on-scroll">
+        <p class="section-pre">Our Moments</p>
+        <h2 class="section-title">Gallery</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item gallery-wide animate-on-scroll"><img src="images/gallery-01.jpg" alt="Us together" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 1</div></div>
+        <div class="gallery-item animate-on-scroll"><img src="images/gallery-02.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 2</div></div>
+        <div class="gallery-item animate-on-scroll"><img src="images/gallery-03.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 3</div></div>
+        <div class="gallery-item gallery-tall animate-on-scroll"><img src="images/gallery-04.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 4</div></div>
+        <div class="gallery-item animate-on-scroll"><img src="images/gallery-05.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 5</div></div>
+        <div class="gallery-item animate-on-scroll"><img src="images/gallery-06.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 6</div></div>
+        <div class="gallery-item gallery-wide animate-on-scroll"><img src="images/gallery-07.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 7</div></div>
+        <div class="gallery-item animate-on-scroll"><img src="images/gallery-08.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 8</div></div>
+        <div class="gallery-item gallery-tall animate-on-scroll"><img src="images/gallery-09.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 9</div></div>
+        <div class="gallery-item animate-on-scroll"><img src="images/gallery-10.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 10</div></div>
+        <div class="gallery-item animate-on-scroll"><img src="images/gallery-11.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 11</div></div>
+        <div class="gallery-item gallery-wide animate-on-scroll"><img src="images/gallery-12.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 12</div></div>
+        <div class="gallery-item animate-on-scroll"><img src="images/gallery-13.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 13</div></div>
+        <div class="gallery-item animate-on-scroll"><img src="images/gallery-14.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 14</div></div>
+        <div class="gallery-item gallery-tall animate-on-scroll"><img src="images/gallery-15.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 15</div></div>
+        <div class="gallery-item animate-on-scroll"><img src="images/gallery-16.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 16</div></div>
+        <div class="gallery-item animate-on-scroll"><img src="images/gallery-17.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 17</div></div>
+        <div class="gallery-item animate-on-scroll"><img src="images/gallery-18.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 18</div></div>
+        <div class="gallery-item gallery-wide animate-on-scroll"><img src="images/gallery-19.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 19</div></div>
+        <div class="gallery-item animate-on-scroll"><img src="images/gallery-20.jpg" alt="" onerror="this.parentElement.classList.add('placeholder')"><div class="img-placeholder">Photo 20</div></div>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="hidden" role="dialog" aria-modal="true">
+      <button id="lightbox-close" aria-label="Close">&times;</button>
+      <button id="lightbox-prev" aria-label="Previous">&lsaquo;</button>
+      <button id="lightbox-next" aria-label="Next">&rsaquo;</button>
+      <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <!-- REASONS I LOVE YOU -->
+    <section id="reasons">
+      <div class="section-header animate-on-scroll">
+        <p class="section-pre">Let Me Count the Ways</p>
+        <h2 class="section-title">Why I Love You</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="reasons-grid">
+        <div class="reason-card animate-on-scroll">
+          <div class="reason-icon">✨</div>
+          <p>Your smile makes every single day brighter — even the hard ones.</p>
+        </div>
+        <div class="reason-card animate-on-scroll">
+          <div class="reason-icon">🏠</div>
+          <p>You're my safe place. My calm in every storm. My home.</p>
+        </div>
+        <div class="reason-card animate-on-scroll">
+          <div class="reason-icon">🗺️</div>
+          <p>Every adventure is better with you — from Belgium to the couch.</p>
+        </div>
+        <div class="reason-card animate-on-scroll">
+          <div class="reason-icon">💫</div>
+          <p>You make ordinary moments unforgettable. Tuesdays with you are better than anyone else's Saturday.</p>
+        </div>
+        <div class="reason-card animate-on-scroll">
+          <div class="reason-icon">🎵</div>
+          <p>The way you sing along at concerts like nobody's watching — that's when I fall in love all over again.</p>
+        </div>
+        <div class="reason-card animate-on-scroll">
+          <div class="reason-icon">🔥</div>
+          <p>You showed me what it feels like to be fully, completely, unapologetically loved.</p>
+        </div>
+        <div class="reason-card animate-on-scroll">
+          <div class="reason-icon">😂</div>
+          <p>You laugh at my jokes — even the terrible ones — and that alone is worth a lifetime.</p>
+        </div>
+        <div class="reason-card animate-on-scroll">
+          <div class="reason-icon">💪</div>
+          <p>You're the strongest person I know. And you still let me be strong for you.</p>
+        </div>
+        <div class="reason-card animate-on-scroll">
+          <div class="reason-icon">♾️</div>
+          <p>Because after all this time, I still get butterflies when you walk into the room.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAVORITE MEMORIES -->
+    <section id="memories">
+      <div class="section-header animate-on-scroll">
+        <p class="section-pre">The Highlight Reel</p>
+        <h2 class="section-title">Favorite Memories</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="memories-container">
+
+        <div class="memory-card animate-on-scroll">
+          <div class="memory-img-wrap">
+            <img src="images/memory-camping.jpg" alt="Camping memory" onerror="this.parentElement.classList.add('placeholder')">
+            <div class="img-placeholder">⛺ Camping</div>
+          </div>
+          <div class="memory-text">
+            <h3>Under the Stars</h3>
+            <p>Campfire smoke in our hair, stars above, your head on my shoulder. These are the moments that remind me life doesn't need to be complicated to be perfect.</p>
+          </div>
+        </div>
+
+        <div class="memory-card memory-reverse animate-on-scroll">
+          <div class="memory-img-wrap">
+            <img src="images/memory-concert.jpg" alt="Concert memory" onerror="this.parentElement.classList.add('placeholder')">
+            <div class="img-placeholder">🎸 Concerts</div>
+          </div>
+          <div class="memory-text">
+            <h3>Our Soundtrack</h3>
+            <p>Every concert with you is a core memory. The bass drops, the crowd energy, your hand finding mine in the dark — music sounds better when you're there.</p>
+          </div>
+        </div>
+
+        <div class="memory-card animate-on-scroll">
+          <div class="memory-img-wrap">
+            <img src="images/memory-vegas.jpg" alt="Vegas memory" onerror="this.parentElement.classList.add('placeholder')">
+            <div class="img-placeholder">🎰 Vegas</div>
+          </div>
+          <div class="memory-text">
+            <h3>Vegas Nights</h3>
+            <p>Neon lights and late nights. We didn't need to gamble — we already hit the jackpot finding each other.</p>
+          </div>
+        </div>
+
+        <div class="memory-card memory-reverse animate-on-scroll">
+          <div class="memory-img-wrap">
+            <img src="images/memory-datenight.jpg" alt="Date night memory" onerror="this.parentElement.classList.add('placeholder')">
+            <div class="img-placeholder">🥂 Friday nights</div>
+          </div>
+          <div class="memory-text">
+            <h3>Friday Rituals</h3>
+            <p>Our weekly date nights are proof that romance isn't about grand gestures — it's about showing up, every week, and choosing each other on purpose.</p>
+          </div>
+        </div>
+
+        <div class="memory-card animate-on-scroll">
+          <div class="memory-img-wrap">
+            <img src="images/memory-belgium.jpg" alt="Belgium memory" onerror="this.parentElement.classList.add('placeholder')">
+            <div class="img-placeholder">🇧🇪 Belgium</div>
+          </div>
+          <div class="memory-text">
+            <h3>Across the Ocean</h3>
+            <p>Belgium proved what I already knew — I'd go anywhere with you. Different country, same butterflies. You make the whole world feel like home.</p>
+          </div>
+        </div>
+
+        <div class="memory-card memory-reverse animate-on-scroll">
+          <div class="memory-img-wrap">
+            <img src="images/memory-rafting.jpg" alt="Rafting memory" onerror="this.parentElement.classList.add('placeholder')">
+            <div class="img-placeholder">🚣 Alpine, WY</div>
+          </div>
+          <div class="memory-text">
+            <h3>Into the Rapids</h3>
+            <p>Soaking wet, screaming, laughing so hard we could barely paddle. That day in Alpine taught me something: with you, I'm not afraid of the wild parts.</p>
+          </div>
+        </div>
+
+        <div class="memory-card animate-on-scroll">
+          <div class="memory-img-wrap">
+            <img src="images/memory-home.jpg" alt="Home together" onerror="this.parentElement.classList.add('placeholder')">
+            <div class="img-placeholder">🏡 Home</div>
+          </div>
+          <div class="memory-text">
+            <h3>The Everyday Magic</h3>
+            <p>Morning coffee together. Late-night conversations on the couch. Cooking dinner and dancing in the kitchen. The quiet, ordinary, everything moments — those are my favorites.</p>
+          </div>
+        </div>
+
+        <div class="memory-card memory-reverse animate-on-scroll">
+          <div class="memory-img-wrap">
+            <img src="images/memory-adventure.jpg" alt="Adventure together" onerror="this.parentElement.classList.add('placeholder')">
+            <div class="img-placeholder">🌄 Adventure</div>
+          </div>
+          <div class="memory-text">
+            <h3>Every Day Is an Adventure</h3>
+            <p>It doesn't matter if we're exploring a new city or just running errands — everything feels like an adventure when I'm with you.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTERACTIVE MAP -->
+    <section id="map-section">
+      <div class="section-header animate-on-scroll">
+        <p class="section-pre">Where Love Took Us</p>
+        <h2 class="section-title">Our Map</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div id="map" class="animate-on-scroll"></div>
+      <div class="map-legend">
+        <div class="legend-item"><span class="legend-dot" style="background:#B76E79"></span> Where it all began</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#C9A96E"></span> Adventures</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#722F37"></span> Home</div>
+      </div>
+    </section>
+
+    <!-- LOVE LETTER -->
+    <section id="love-letter">
+      <div class="section-header animate-on-scroll">
+        <p class="section-pre">From My Heart</p>
+        <h2 class="section-title">A Letter for You</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="envelope-container animate-on-scroll">
+        <div class="envelope" id="envelope">
+          <div class="envelope-flap"></div>
+          <div class="envelope-body">
+            <p class="envelope-label">Tap to open</p>
+          </div>
+        </div>
+        <div class="letter" id="letter">
+          <div class="letter-content">
+            <p class="letter-date">July 2026</p>
+            <p class="letter-greeting">My Dearest Kris,</p>
+            <p>I've been trying to find the right words, but the truth is — there aren't enough of them. No sentence is big enough to hold what you mean to me.</p>
+            <p>From the moment we matched on Facebook Dating (fine, "Marketplace"), something just clicked. Our first date at Cucina — the one we never planned — turned out to be the beginning of the greatest story I've ever been part of.</p>
+            <p>You came into my life and quietly made everything better. The way you laugh, the way you love, the way you see me — really see me — changed everything.</p>
+            <p>We've camped under stars, floated down rivers, crossed oceans, danced at concerts, and built a home together. Twice. And through every single moment, I've known one thing with absolute certainty:</p>
+            <p><strong>You are my person.</strong></p>
+            <p>I love the way your eyes light up when you talk about something you're passionate about. I love our Friday nights. I love that we can do absolutely nothing together and it still feels like the best day. I love that you chose me.</p>
+            <p>And now I'm asking you to keep choosing me — forever.</p>
+            <p class="letter-closing">With all my love, always,</p>
+            <p class="letter-signature">Darci</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THIS DAY IN OUR STORY -->
+    <section id="this-day">
+      <div class="section-header animate-on-scroll">
+        <p class="section-pre">Written in the Stars</p>
+        <h2 class="section-title">This Day in Our Story</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="dates-container">
+        <div class="date-card animate-on-scroll">
+          <div class="date-number">28</div>
+          <div class="date-month">February</div>
+          <div class="date-year">2025</div>
+          <div class="date-label">Our First Date</div>
+          <p class="date-desc">Cucina saved the day when Wildwood couldn't</p>
+        </div>
+        <div class="date-card animate-on-scroll">
+          <div class="date-number">18</div>
+          <div class="date-month">March</div>
+          <div class="date-year">2025</div>
+          <div class="date-label">Officially Ours</div>
+          <p class="date-desc">The resume worked. She hired me.</p>
+        </div>
+        <div class="date-card date-card-special animate-on-scroll">
+          <div class="date-number">?</div>
+          <div class="date-month">???</div>
+          <div class="date-year">2026</div>
+          <div class="date-label">The Next Big Day</div>
+          <p class="date-desc">Keep scrolling...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section id="countdown">
+      <div class="countdown-content animate-on-scroll">
+        <p class="countdown-pre">The Best Is Yet to Come</p>
+        <h2 class="countdown-title">Until Our Next Adventure</h2>
+        <div class="countdown-timer" id="countdown-timer">
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-days">00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-hours">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-minutes">00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-seconds">00</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROPOSAL -->
+    <section id="proposal">
+      <div class="proposal-stage" id="proposal-stage-1">
+        <p class="proposal-text animate-on-scroll">You've made my life more beautiful than I ever imagined.</p>
+      </div>
+      <div class="proposal-stage" id="proposal-stage-2">
+        <p class="proposal-text animate-on-scroll">I can't wait to spend forever with you.</p>
+      </div>
+      <div class="proposal-stage" id="proposal-stage-3">
+        <button class="proposal-btn animate-on-scroll" id="open-heart-btn">
+          <span class="btn-heart">♥</span>
+          <span>Open My Heart</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- PROPOSAL REVEAL (fullscreen overlay) -->
+    <div id="proposal-reveal" class="hidden">
+      <div class="reveal-bg"></div>
+      <div class="reveal-content">
+        <div class="reveal-sparkles"></div>
+        <p class="reveal-question" id="reveal-question">Will You Marry Me?</p>
+        <div class="reveal-buttons" id="reveal-buttons">
+          <button class="reveal-btn reveal-yes" id="btn-yes">Yes ❤️</button>
+          <button class="reveal-btn reveal-forever" id="btn-forever">Forever ❤️</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CELEBRATION -->
+    <div id="celebration" class="hidden">
+      <div class="celebration-content">
+        <h1 class="celebration-title" id="celebration-title"></h1>
+        <div class="celebration-hearts"></div>
+        <p class="celebration-sub">Our next chapter begins now.</p>
+        <div class="celebration-img-wrap">
+          <img src="images/celebration.jpg" alt="Us, forever" onerror="this.parentElement.classList.add('placeholder')">
+          <div class="img-placeholder">💍 Our forever photo</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- CANVAS FOR CONFETTI -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
