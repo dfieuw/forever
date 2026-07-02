@@ -996,10 +996,13 @@ button {
 }
 
 .resume-note {
-  font-family: var(--font-script);
-  font-size: 1.3rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 400;
   color: var(--wine);
   text-align: center;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
 }
 
 @media (max-width: 600px) {
