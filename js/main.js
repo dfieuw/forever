@@ -90,29 +90,9 @@
     loader.classList.remove('hidden');
     loader.style.display = 'block';
 
-    var screens = loader.querySelectorAll('.load-screen');
-    var currentScreen = 0;
-
-    screens[0].classList.add('active');
-    setTimeout(function () { advanceScreen(); }, 3000);
-
-    function advanceScreen() {
-      screens[currentScreen].classList.remove('active');
-      currentScreen++;
-      if (currentScreen < screens.length) {
-        screens[currentScreen].classList.add('active');
-      }
-    }
-
-    loader.addEventListener('click', function handleTap() {
-      if (currentScreen === 0) return;
-      if (currentScreen < screens.length - 1) {
-        advanceScreen();
-      } else {
-        loader.removeEventListener('click', handleTap);
-        window.location.href = 'chapter1.html';
-      }
-    });
+    setTimeout(function () {
+      window.location.href = 'chapter1.html';
+    }, 3000);
   }
 
   // ==================== CHAPTER PAGE INIT ====================
