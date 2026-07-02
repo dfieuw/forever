@@ -117,6 +117,9 @@
 
   // ==================== CHAPTER PAGE INIT ====================
   function initChapterPage() {
+    var mp = document.getElementById('music-player');
+    if (mp) mp.classList.remove('hidden');
+
     initScrollAnimations();
     initNavigation();
     initPetals();
