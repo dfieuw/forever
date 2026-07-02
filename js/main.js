@@ -16,9 +16,16 @@
       { lat: 40.7488, lng: -111.8713, label: 'Cucina', desc: 'Feb 28, 2025. First date. First kiss. The night everything changed.', color: '#B76E79', type: 'origin' },
       { lat: 40.6461, lng: -111.4980, label: 'Park City', desc: 'Snowfall walks, wine festival, hot tub, Bridge Cafe brunch. A perfect weekend.', color: '#C9A96E', type: 'adventure' },
       { lat: 43.1614, lng: -111.0193, label: 'Alpine, Wyoming', desc: 'River rafting. She rode the bull and didn\'t fall in. Legend.', color: '#C9A96E', type: 'adventure' },
-      { lat: 43.6150, lng: -116.2023, label: 'Idaho', desc: 'Another adventure in the books.', color: '#C9A96E', type: 'adventure' },
-      { lat: 50.8503, lng: 4.3517, label: 'Belgium', desc: 'Waffles, chocolate, cobblestones, and us. Our love went international.', color: '#C9A96E', type: 'adventure' },
+      { lat: 42.5558, lng: -114.4601, label: 'Twin Falls, Idaho', desc: 'Another adventure in the books.', color: '#C9A96E', type: 'adventure' },
+      { lat: 52.3676, lng: 4.9041, label: 'Amsterdam', desc: 'Canals, bikes, and us exploring it all together.', color: '#C9A96E', type: 'adventure' },
+      { lat: 50.1109, lng: 8.6821, label: 'Germany', desc: 'Part of our European adventure.', color: '#C9A96E', type: 'adventure' },
+      { lat: 49.6116, lng: 6.1319, label: 'Luxembourg', desc: 'Another stamp on our love story.', color: '#C9A96E', type: 'adventure' },
+      { lat: 51.2194, lng: 4.4025, label: 'Antwerp', desc: 'Diamonds, fashion, and falling deeper in love.', color: '#C9A96E', type: 'adventure' },
+      { lat: 50.8503, lng: 4.3517, label: 'Brussels', desc: 'Waffles, chocolate, and us.', color: '#C9A96E', type: 'adventure' },
+      { lat: 51.0543, lng: 3.7174, label: 'Ghent', desc: 'Medieval charm and modern love.', color: '#C9A96E', type: 'adventure' },
+      { lat: 51.2093, lng: 3.2247, label: 'Bruges', desc: 'Cobblestones and fairy tale streets.', color: '#C9A96E', type: 'adventure' },
       { lat: 36.1699, lng: -115.1398, label: 'Las Vegas', desc: 'Concerts under neon lights. We hit the jackpot long before we got here.', color: '#C9A96E', type: 'adventure' },
+      { lat: 37.0965, lng: -113.5684, label: 'St. George, Utah', desc: 'Red rocks and good times.', color: '#C9A96E', type: 'adventure' },
       { lat: 40.7608, lng: -111.8510, label: 'Home', desc: 'From two homes to one. This is where our forever lives.', color: '#722F37', type: 'home' },
     ]
   };
