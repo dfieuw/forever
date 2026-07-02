@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter Four: Our Future | Darci & Kris</title>
+  <meta name="description" content="A love story.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <canvas id="petals-canvas"></canvas>
+
+  <div id="music-player" class="hidden">
+    <audio id="bg-music" loop preload="auto">
+      <source src="music/song.mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-toggle" aria-label="Toggle music">
+      <span class="music-icon music-off">♪</span>
+      <span class="music-icon music-on hidden">♫</span>
+    </button>
+  </div>
+
+  <nav id="main-nav" class="visible" style="transform:translateY(0)">
+    <div class="nav-inner">
+      <a href="chapter1.html" class="nav-logo">D & K</a>
+      <div class="nav-links">
+        <a href="chapter1.html">The Beginning</a>
+        <a href="chapter2.html">Adventures</a>
+        <a href="chapter3.html">Our Love</a>
+        <a href="chapter4.html">Our Future</a>
+      </div>
+      <button id="nav-hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden">
+      <a href="chapter1.html">The Beginning</a>
+      <a href="chapter2.html">Adventures</a>
+      <a href="chapter3.html">Our Love</a>
+      <a href="chapter4.html">Our Future</a>
+    </div>
+  </nav>
+
+  <main id="chapter-content">
+
+    <section class="chapter-title-card">
+      <p class="chapter-number">Chapter Four</p>
+      <h1 class="chapter-name">Our Future</h1>
+    </section>
+
+    <section id="love-letter">
+      <div class="section-header animate-on-scroll">
+        <p class="section-pre">From My Heart</p>
+        <h2 class="section-title">A Letter for You</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="envelope-container animate-on-scroll">
+        <div class="envelope" id="envelope">
+          <div class="envelope-flap"></div>
+          <div class="envelope-body">
+            <p class="envelope-label">Tap to open</p>
+          </div>
+        </div>
+        <div class="letter" id="letter">
+          <div class="letter-content">
+            <p class="letter-date">July 2026</p>
+            <p class="letter-greeting">My Dearest Kris,</p>
+            <p>I've been trying to find the right words, but the truth is, there aren't enough of them. No sentence is big enough to hold what you mean to me.</p>
+            <p>From the moment we matched on Facebook Dating (fine, "Marketplace"), something just clicked. Our first date at Cucina, that first kiss. I knew right then that my life was about to change.</p>
+            <p>You came into my life and quietly made everything better. The way you laugh, the way you love, the way you see me, really see me. Changed everything.</p>
+            <p>We've walked through snowfall in Park City, floated down rivers in Alpine (and you rode that bull like a champion), crossed oceans to Belgium, licked each other's faces on State Street, you've danced at every concert, and we've built a home together. And through every single moment, I've known one thing with absolute certainty:</p>
+            <p><strong>You are my person.</strong></p>
+            <p>I love hearing you laugh. It's my favorite sound. I love our Friday date nights, Slackwater, Cotton Bottom, wherever. I love camping and getting lost and comedy shows and concerts. I love our nightly check-ins, asking about each other's feelings and favorites, and the answer to "did we take meat out?" always being no. I love how you show up. Every single day, without being asked. I love watching you be brave. I love that you chose me.</p>
+            <p>And now I'm asking you to keep choosing me. Forever.</p>
+            <p class="letter-closing">With all my love, always,</p>
+            <p class="letter-signature">Darci</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="this-day">
+      <div class="section-header animate-on-scroll">
+        <p class="section-pre">Written in the Stars</p>
+        <h2 class="section-title">This Day in Our Story</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="dates-container">
+        <div class="date-card animate-on-scroll">
+          <div class="date-number">28</div>
+          <div class="date-month">February</div>
+          <div class="date-year">2025</div>
+          <div class="date-label">First Date &amp; First Kiss</div>
+          <p class="date-desc">Cucina, first kiss, and butterflies</p>
+        </div>
+        <div class="date-card animate-on-scroll">
+          <div class="date-number">18</div>
+          <div class="date-month">March</div>
+          <div class="date-year">2025</div>
+          <div class="date-label">Officially Ours</div>
+          <p class="date-desc">Saffron Valley. The resume worked.</p>
+        </div>
+        <div class="date-card animate-on-scroll">
+          <div class="date-number">26</div>
+          <div class="date-month">May</div>
+          <div class="date-year">2025</div>
+          <div class="date-label">Moved In Together</div>
+          <p class="date-desc">Two homes became one</p>
+        </div>
+        <div class="date-card date-card-special animate-on-scroll">
+          <div class="date-number">?</div>
+          <div class="date-month">???</div>
+          <div class="date-year">2026</div>
+          <div class="date-label">The Next Big Day</div>
+          <p class="date-desc">Keep scrolling...</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="countdown">
+      <div class="countdown-content animate-on-scroll">
+        <p class="countdown-pre">Since March 18, 2025</p>
+        <h2 class="countdown-title">We've Been Ours For</h2>
+        <div class="countdown-timer" id="countdown-timer">
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-days">00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-hours">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-minutes">00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-seconds">00</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
+        <p class="countdown-sub">And counting.</p>
+      </div>
+    </section>
+
+    <section id="proposal">
+      <div class="proposal-chapter animate-on-scroll">
+        <p class="proposal-chapter-text">Our Story</p>
+      </div>
+      <div class="proposal-chapter animate-on-scroll">
+        <p class="proposal-chapter-text">Everything we've been through</p>
+      </div>
+      <div class="proposal-chapter animate-on-scroll">
+        <p class="proposal-chapter-text">Everything we've overcome</p>
+      </div>
+      <div class="proposal-chapter animate-on-scroll">
+        <p class="proposal-chapter-text">Everything we've dreamed about</p>
+      </div>
+      <div class="proposal-chapter animate-on-scroll">
+        <p class="proposal-chapter-text">One question remains...</p>
+      </div>
+      <div class="proposal-final animate-on-scroll">
+        <button class="proposal-btn" id="open-heart-btn">
+          <span class="btn-heart">♥</span>
+          <span>Open My Heart</span>
+        </button>
+      </div>
+    </section>
+
+    <div id="proposal-reveal" class="hidden">
+      <div class="reveal-bg"></div>
+      <div class="reveal-content">
+        <div class="reveal-sparkles"></div>
+        <p class="reveal-question" id="reveal-question">Will You Marry Me?</p>
+        <div class="reveal-buttons" id="reveal-buttons">
+          <button class="reveal-btn reveal-yes" id="btn-yes">Yes ❤️</button>
+          <button class="reveal-btn reveal-forever" id="btn-forever">Forever ❤️</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="celebration" class="hidden">
+      <div class="celebration-content">
+        <h1 class="celebration-title" id="celebration-title"></h1>
+        <div class="celebration-ornament">&#10047;</div>
+        <p class="celebration-sub">Our next chapter begins now.</p>
+        <div class="celebration-img-wrap">
+          <img src="images/celebration.jpg" alt="Us, forever" onerror="this.parentElement.classList.add('placeholder')">
+          <div class="img-placeholder">💍 Our forever photo</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
