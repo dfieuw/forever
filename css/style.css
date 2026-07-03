@@ -1925,11 +1925,20 @@ button {
 }
 
 /* ---------- INDIVIDUAL IMAGE FIXES ---------- */
-img[src*="memory-vegas"],
-img[src*="memory-belgium"],
 img[src*="timeline-concerts"],
 img[src*="timeline-adventures"] {
-  object-position: center top !important;
+  object-position: center 20% !important;
+}
+
+img[src*="memory-vegas"],
+img[src*="memory-belgium"] {
+  object-position: center 10% !important;
+}
+
+img[src*="timeline-future"] {
+  object-fit: cover !important;
+  object-position: center 30% !important;
+  transform: scale(1.2);
 }
 
 /* ---------- LEAFLET OVERRIDES ---------- */
