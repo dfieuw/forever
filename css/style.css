@@ -1927,12 +1927,12 @@ button {
 /* ---------- INDIVIDUAL IMAGE FIXES ---------- */
 img[src*="timeline-concerts"],
 img[src*="timeline-adventures"] {
-  object-position: center 20% !important;
+  object-position: center bottom !important;
 }
 
 img[src*="memory-vegas"],
 img[src*="memory-belgium"] {
-  object-position: center 10% !important;
+  object-position: center bottom !important;
 }
 
 img[src*="timeline-future"] {
