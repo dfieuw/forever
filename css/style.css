@@ -1403,7 +1403,7 @@ button {
 }
 
 .letter.visible {
-  max-height: 2000px;
+  max-height: 5000px;
   opacity: 1;
   margin-top: 2rem;
 }
