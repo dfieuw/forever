@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Vows to You | Darci & Kris</title>
+  <meta name="description" content="A love story.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .vows-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+    }
+
+    .vows-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .vows-pre {
+      font-family: var(--font-clean);
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .vows-title {
+      font-family: var(--font-script);
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      color: var(--wine);
+      margin-bottom: 1rem;
+    }
+
+    .vows-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto;
+    }
+
+    .vows-container {
+      max-width: 650px;
+      width: 100%;
+    }
+
+    .vow-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 3rem;
+      margin-bottom: 2.5rem;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.05),
+        0 10px 40px rgba(0,0,0,0.08);
+      border: 1px solid rgba(201, 169, 110, 0.15);
+      position: relative;
+    }
+
+    .vow-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--wine), var(--rose), var(--gold));
+    }
+
+    .vow-number {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .vow-card p {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: var(--charcoal);
+      line-height: 1.9;
+    }
+
+    .vow-card p strong {
+      color: var(--wine);
+      font-weight: 600;
+    }
+
+    .vows-closing {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 3rem 2rem;
+    }
+
+    .vows-closing-text {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--wine);
+      line-height: 1.8;
+      max-width: 550px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .vows-signature {
+      font-family: var(--font-script);
+      font-size: 2.5rem;
+      color: var(--rose);
+    }
+
+    .vows-back {
+      display: inline-block;
+      margin-top: 3rem;
+      font-family: var(--font-clean);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--warm-gray-light);
+      border: 1px solid var(--gold);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      transition: all 0.3s;
+    }
+
+    .vows-back:hover {
+      background: var(--gold);
+      color: var(--charcoal);
+    }
+
+    @media (max-width: 600px) {
+      .vow-card {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="petals-canvas"></canvas>
+
+  <main class="vows-page">
+
+    <div class="vows-header">
+      <p class="vows-pre">For Your Eyes Only</p>
+      <h1 class="vows-title">My Vows to You</h1>
+      <div class="vows-divider"></div>
+    </div>
+
+    <div class="vows-container">
+
+      <div class="vow-card animate-on-scroll">
+        <div class="vow-number">I.</div>
+        <p><strong>I vow to choose you every single day.</strong> Not just on the easy days when we're laughing over dinner or dancing at a concert. On the hard days too. The tired days, the frustrating days, the days when life doesn't look like the version we planned. I will choose you first, every time.</p>
+      </div>
+
+      <div class="vow-card animate-on-scroll">
+        <div class="vow-number">II.</div>
+        <p><strong>I vow to never stop showing up.</strong> The way you show up for me changed what I thought love could be. I promise to match that energy. To be steady. To be present. To never leave you wondering where you stand with me. You will always know.</p>
+      </div>
+
+      <div class="vow-card animate-on-scroll">
+        <div class="vow-number">III.</div>
+        <p><strong>I vow to love your kids like they are my own.</strong> Brielle and Gavyn are part of you, and they became part of me the moment I met them. I will show up for their games, their milestones, their hard days and their silly ones. I will be someone they can count on, always.</p>
+      </div>
+
+      <div class="vow-card animate-on-scroll">
+        <div class="vow-number">IV.</div>
+        <p><strong>I vow to protect our Friday nights.</strong> No matter how busy life gets, I will guard that time for us. A new restaurant, a couch night, a walk to nowhere. The tradition matters less than the promise behind it: we will never stop dating each other.</p>
+      </div>
+
+      <div class="vow-card animate-on-scroll">
+        <div class="vow-number">V.</div>
+        <p><strong>I vow to keep asking.</strong> How was your day. What are you feeling. What's your favorite part. What do you need from me. I will never assume I already know. I will keep learning you for the rest of my life, because you are worth paying attention to.</p>
+      </div>
+
+      <div class="vow-card animate-on-scroll">
+        <div class="vow-number">VI.</div>
+        <p><strong>I vow to be brave because you taught me how.</strong> You came out to your mom. You opened your entire world to me. You let me in when it would have been easier not to. I promise to match your courage. To say the hard things out loud. To never hide from you.</p>
+      </div>
+
+      <div class="vow-card animate-on-scroll">
+        <div class="vow-number">VII.</div>
+        <p><strong>I vow to keep our list growing.</strong> More states, more capitals, more countries, more trails, more concerts, more restaurants we can't pronounce. I vow to always say yes when you say "should we try it?" and to never let us get comfortable enough to stop exploring.</p>
+      </div>
+
+      <div class="vow-card animate-on-scroll">
+        <div class="vow-number">VIII.</div>
+        <p><strong>I vow to love you when you don't feel loveable.</strong> You do that for me. You love me through the mess, the doubt, the days I can't see what you see in me. I promise to do the same. You will never have to earn my love. It is yours. It has been yours.</p>
+      </div>
+
+      <div class="vow-card animate-on-scroll">
+        <div class="vow-number">IX.</div>
+        <p><strong>I vow to laugh with you every single day.</strong> At comedy shows. At bad reality TV. At ourselves. At the things only we find funny. I will never let a day pass without finding something to laugh about together, because your laugh is the sound my whole life changed to.</p>
+      </div>
+
+      <div class="vow-card animate-on-scroll">
+        <div class="vow-number">X.</div>
+        <p><strong>I vow to never stop saying it.</strong> I love you. Out loud. Every morning, every night, and at random moments in between when it hits me all over again that I get to do this life with you. You will hear it so often you'll roll your eyes, and I still won't stop.</p>
+      </div>
+
+    </div>
+
+    <div class="vows-closing">
+      <p class="vows-closing-text">These are my promises to you. Not just for the wedding day, but for every single day after. You are my forever.</p>
+      <p class="vows-signature">Darci</p>
+      <a href="chapter4.html" class="vows-back">Back to Our Future</a>
+    </div>
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
