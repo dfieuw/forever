@@ -98,13 +98,10 @@
 
   // ==================== CHAPTER PAGE INIT ====================
   function initChapterPage() {
-    var mp = document.getElementById('music-player');
-    if (mp) mp.classList.remove('hidden');
-
     initScrollAnimations();
     initNavigation();
     initPetals();
-    initMusic();
+    initEasterEgg();
 
     if (document.querySelector('.gallery-grid')) initGallery();
     if (document.getElementById('map')) initMap();
@@ -418,37 +415,44 @@
     animate();
   }
 
-  // ==================== MUSIC ====================
-  function initMusic() {
-    var audio = document.getElementById('bg-music');
-    var toggle = document.getElementById('music-toggle');
-    if (!audio || !toggle) return;
+  // ==================== EASTER EGG ====================
+  function initEasterEgg() {
+    var btn = document.getElementById('egg-btn');
+    if (!btn) return;
 
-    var iconOff = toggle.querySelector('.music-off');
-    var iconOn = toggle.querySelector('.music-on');
-    var playing = false;
+    var unlockDate = new Date('2026-08-01T07:00:00Z');
 
-    if (audio.canPlayType('audio/mpeg')) {
-      audio.play().then(function () {
-        playing = true;
-        iconOff.classList.add('hidden');
-        iconOn.classList.remove('hidden');
-      }).catch(function () {});
-    }
-
-    toggle.addEventListener('click', function () {
-      if (playing) {
-        audio.pause();
-        playing = false;
-        iconOff.classList.remove('hidden');
-        iconOn.classList.add('hidden');
+    btn.addEventListener('click', function () {
+      if (new Date() >= unlockDate) {
+        window.location.href = 'd-vows.html';
       } else {
-        audio.play();
-        playing = true;
-        iconOff.classList.add('hidden');
-        iconOn.classList.remove('hidden');
+        showEggPopup();
       }
     });
+  }
+
+  function showEggPopup() {
+    var existing = document.getElementById('egg-popup');
+    if (existing) existing.remove();
+
+    var popup = document.createElement('div');
+    popup.id = 'egg-popup';
+    popup.style.cssText = 'position:fixed;inset:0;z-index:10005;display:flex;align-items:center;justify-content:center;background:rgba(45,36,38,0.92);backdrop-filter:blur(10px);opacity:0;transition:opacity 0.3s ease;';
+    popup.innerHTML =
+      '<div style="text-align:center;padding:3rem;max-width:400px;">' +
+      '<div style="font-size:3rem;margin-bottom:1.5rem;">🔒</div>' +
+      '<p style="font-family:Cormorant Garamond,serif;font-size:1.5rem;color:#FDF8F0;font-weight:300;line-height:1.6;margin-bottom:1.5rem;">Patience, my love...<br>Some things are worth the wait.</p>' +
+      '<button id="egg-close" style="font-family:Outfit,sans-serif;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:#C9A96E;border:1px solid #C9A96E;padding:0.6rem 1.5rem;border-radius:50px;cursor:pointer;background:none;">Not Yet</button>' +
+      '</div>';
+    document.body.appendChild(popup);
+    requestAnimationFrame(function () { popup.style.opacity = '1'; });
+
+    function closePopup() {
+      popup.style.opacity = '0';
+      setTimeout(function () { popup.remove(); }, 300);
+    }
+    document.getElementById('egg-close').addEventListener('click', closePopup);
+    popup.addEventListener('click', function (e) { if (e.target === popup) closePopup(); });
   }
 
 })();
